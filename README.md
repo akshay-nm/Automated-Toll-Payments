@@ -3,7 +3,18 @@
 ATP is an application based on object detection, OCR, Payment gateway and link-generation
 
           Input  = Image from a Camera showing vehicle and its license plate
-          Output = License Plate recognition, performing optical character recognition (OCR) on License plate, cross check the license plate number with the database of license plate, Generate a payment link and notify the user.
+          Output = License Plate detection, performing optical character recognition (OCR) on License plate, cross check the license plate number with the database of license plate, generate a payment link and notify the user.
 
 # Tasks
 
+          - Importing raw video from the camera as soon as a vehicle has appeared in it.
+          - Running it through openCV to detect the license plate.
+          - Extracting the license plate frame.
+          - Detecting the license plate and running it through tesseract to obtain the license plate number.
+          - Cross referencing the license plate number with the provided database.
+          - Generating a payment link & notifying user, if the current license plate number is found in the database.
+          
+# Nodes 
+          
+          # Camera
+                    providing 
