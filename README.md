@@ -17,4 +17,8 @@ ATP is an application based on object detection, OCR, Payment gateway and link-g
 # Nodes 
           
           # Camera
-                    providing 
+                    providing image of the vehicle
+                   
+          # PC 
+                    object detection, optical character recognition, link generation.
+                    
