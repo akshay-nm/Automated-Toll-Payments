@@ -25,6 +25,9 @@ ATP is an application based on object detection, OCR, Payment gateway and link-g
           # Phone
                     getting notified for payment.
                     
+          # Database
+                    contain records of toll booth ID, Username, License Plate number and information about the vehicle owner.
+                    
  # Payment Link Requirements
           # Saved Data
                     RC number
