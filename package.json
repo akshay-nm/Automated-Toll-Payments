@@ -3,7 +3,8 @@
   "workspaces": [
     "atp-admin-client", 
     "apt-pay-client",
-    "atp-vehicles-api", 
-    "atp-booths-api"
+    "atp-booths-api",
+    "atp-sar-api",
+    "atp-vehicles-api"
   ]
 }
