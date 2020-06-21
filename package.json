@@ -5,6 +5,7 @@
     "apt-pay-client",
     "atp-booths-api",
     "atp-sar-api",
+    "apt-transactions-api",
     "atp-vehicles-api"
   ]
 }
