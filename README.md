@@ -25,3 +25,5 @@ ATP is an application based on object detection, OCR, Payment gateway and link-g
           # Phone
                     getting notified for payment.
                     
+ # Payment Link 
+          - Time, License Number, User name, location of toll usage.
