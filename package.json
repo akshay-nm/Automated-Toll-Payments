@@ -1,4 +1,8 @@
 {
   "private": true,
-  "workspaces": ["atp-vehicles-api", "atp-booths-api", "atp-tolls-api"]
+  "workspaces": [
+    "atp-admin-client", 
+    "atp-vehicles-api", 
+    "atp-booths-api"
+  ]
 }
