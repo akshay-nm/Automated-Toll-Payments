@@ -26,7 +26,16 @@ ATP is an application based on object detection, OCR, Payment gateway and link-g
                     getting notified for payment.
                     
  # Payment Link Requirements
-          - Time of Passage of vehicle.
-          - License Number on the vehicle.
-          - User name.
-          - location of toll usage.
+          # Saved Data
+                    RC number
+                    Name of the Vehicle Owner
+                    Toll booth ID
+                    Toll value according to vehicle type
+                 
+          # Required Data
+                    Time of Passage of Vehicle
+                    License Plate Number
+                    Type of Vehicle
+                    Username
+                    
+         
