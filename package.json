@@ -2,6 +2,7 @@
   "private": true,
   "workspaces": [
     "atp-admin-client", 
+    "apt-pay-client",
     "atp-vehicles-api", 
     "atp-booths-api"
   ]
