@@ -20,17 +20,19 @@ const firebaseConfig = {
 // Initialize Firebase
 
 class Firebase {
-  constructor() {
+  constructor(onAuthStateChange) {
     firebase.initializeApp(firebaseConfig);
 
     firebase.auth().useDeviceLanguage();
-    this.auth = firebase.auth;
+    if(onAuthStateChange) firebase.auth().onAuthStateChanged(onAuthStateChange);
+    this.auth = firebase.auth();
   }
 
   // *** Auth API ***
  
   doCreateUserWithEmailAndPassword = (email, password) => this.auth.createUserWithEmailAndPassword(email, password);
   doSignInWithEmailAndPassword = (email, password) => this.auth.signInWithEmailAndPassword(email, password);
+  doSendEmailVerification = () => this.auth.currentUser.sendEmailVerification();
   doSignOut = () => this.auth.signOut();
   doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
   doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);

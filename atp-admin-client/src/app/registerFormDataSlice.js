@@ -1,8 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const loginFormDataSlice = createSlice({
-  name: 'loginFormData',
+const registerFormDataSlice = createSlice({
+  name: 'registerFormData',
   initialState: {
+    name: {
+      value: '',
+      isValid: false,
+      wasValidated: false
+    },
     email: {
       value: '',
       isValid: false,
@@ -13,14 +18,25 @@ const loginFormDataSlice = createSlice({
       isValid: false,
       wasValidated: false
     },
+    confirmPassword: {
+      value: '',
+      isValid: false,
+      wasValidated: false
+    },
     error: ''
   },
   reducers: {
+    nameUpdated: (state, action) => {
+      state.name = action.payload
+    },
     emailUpdated: (state, action) => {
       state.email = action.payload
     },
     passwordUpdated: (state, action) => {
       state.password = action.payload
+    },
+    confirmPasswordUpdated: (state, action) => {
+      state.confirmPassword = action.payload
     },
     errorUpdated: (state, action) => {
       state.error = action.payload
@@ -29,10 +45,20 @@ const loginFormDataSlice = createSlice({
 })
 
 export const {
+  nameUpdated,
   emailUpdated,
   passwordUpdated,
+  confirmPasswordUpdated,
   errorUpdated,
-} = loginFormDataSlice.actions
+} = registerFormDataSlice.actions
+
+export const nameChanged = value => dispatch => {
+  dispatch(nameUpdated({
+    value,
+    isValid: value.length > 0,
+    wasValidated: true
+  }))
+}
 
 export const emailChanged = value => dispatch => {
   dispatch(emailUpdated({
@@ -50,4 +76,12 @@ export const passwordChanged = value => dispatch => {
   }))
 }
 
-export default loginFormDataSlice.reducer
+export const confirmPasswordChanged = value => dispatch => {
+  dispatch(confirmPasswordUpdated({
+    value,
+    isValid: value.length > 0,
+    wasValidated: true
+  }))
+}
+
+export default registerFormDataSlice.reducer
