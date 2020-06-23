@@ -2,7 +2,6 @@
   "private": true,
   "workspaces": [
     "atp-admin-client",
-    "atp-server",
-    "atp-user-cleint"
+    "atp-server"
   ]
 }
