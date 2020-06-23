@@ -6,12 +6,15 @@ import store from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import Firebase, { FirebaseContext } from './components/Firebase';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <FirebaseContext.Provider value={new Firebase()} >
-        <App />
+        <Router>
+          <App />
+        </Router>
       </FirebaseContext.Provider>
     </Provider>
   </React.StrictMode>,
