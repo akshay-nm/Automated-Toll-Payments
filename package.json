@@ -1,6 +1,7 @@
 {
   "private": true,
   "workspaces": [
+<<<<<<< HEAD
     "atp-admin-client", 
     "apt-pay-client",
     "atp-booths-api",
@@ -9,3 +10,9 @@
     "atp-vehicles-api"
   ]
 }
+=======
+    "atp-admin-client",
+    "atp-server"
+  ]
+}
+>>>>>>> single-server-version

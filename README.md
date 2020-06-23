@@ -181,6 +181,37 @@ These are generated when a registered vehicle passes through the toll booth. For
 ### Payments page
 These are pages which facilitate payment against pending charges. 
 
+<<<<<<< HEAD
+=======
+
+## The Process: 
+
+### Creating a transaction
+
+1. A bot reads the RC number from video feed and sends a request to create apt transaction. 
+2. The server-side then checks the vehicles database for existing records matching the rc provided by the bot. It also checks the booths data base for existing records matching boothId provided by the bot.
+3. On successful match, the server creates a transaction between the booth and the vehicle owner. The server sends the payment link to the user. The server then responds to the bot with the transactionId.
+
+* Whenever a new vehicle passes, the vehicle details are displayed on the screen. If the vehicle is blacklisted, the booth boom will close. The admin can then choose how to handle the case.
+
+### Accepting payment
+
+1. The user goes to the payment page and enters credentials. (Click on pay button).
+2. The server then updates the transaction status as complete.
+
+### Generating receipts
+
+1. The user clicks on generate receipt.
+2. The server sends a JSON file with transaction details.
+
+### Reporting suspicious activity
+
+1. The user receives a notification about a pending transaction. 
+2. The user then selects report suspicious activity.
+3. The server then updates the vehicle status as blacklisted.
+
+
+>>>>>>> single-server-version
 ## Network Nodes
 
 - API Servers
@@ -191,7 +222,10 @@ These are pages which facilitate payment against pending charges.
 - Payment Client
 - Admin Client
 - Database
+<<<<<<< HEAD
 
+=======
+>>>>>>> single-server-version
                     
 ## Payment Link Requirements
 
@@ -206,5 +240,8 @@ Time of Passage of Vehicle
 License Plate Number
 Type of Vehicle
 Username
+<<<<<<< HEAD
           
          
+=======
+>>>>>>> single-server-version
