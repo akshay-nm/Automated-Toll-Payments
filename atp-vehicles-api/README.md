@@ -1,3 +1,35 @@
+# Vehicles api
+
+## Data model
+
+- id
+- rc
+- owner
+  - name
+  - contact
+    - email
+    - mobile
+  - address
+    - street
+    - city
+    - state
+    - country
+    - pincode
+- vehicleType
+- vehicleStatus (Exempted | Blacklisted | Normal)
+
+## This API will be used when
+
+S.No. | Task | Request | Response
+--- | --- | --- | ---
+1 | Booth client requests to create a transaction.This process is automatic as an OCR bot sends an HTTP request to the server | RC: string, BoothId: string | 200:transactionId, 400, 500 
+2 | New vehicle is registered. This is done at RTO probably. Here the same functionality is simiulated via admin client. | All the details as per `Vehicle data model`. ID is auto generated. | 200: vehicleId, 400, 500 
+3 | Vehicle details can be updated via Admin client. | vehicleId: string, changes: [ key: value ] | 200, 400, 500 
+4 | Vehilce can be removed via Admin client | vehicleId: string | 200, 400, 500
+
+
+# Nextjs generated docs
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
