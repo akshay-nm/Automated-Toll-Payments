@@ -13,6 +13,7 @@ const loginFormDataSlice = createSlice({
       isValid: false,
       wasValidated: false
     },
+    error: ''
   },
   reducers: {
     emailUpdated: (state, action) => {
@@ -21,12 +22,16 @@ const loginFormDataSlice = createSlice({
     passwordUpdated: (state, action) => {
       state.password = action.payload
     },
+    errorUpdated: (state, action) => {
+      state.error = action.payload
+    }
   }
 })
 
 export const {
   emailUpdated,
   passwordUpdated,
+  errorUpdated,
 } = loginFormDataSlice.actions
 
 export const emailChanged = value => dispatch => {
@@ -44,6 +49,5 @@ export const passwordChanged = value => dispatch => {
     wasValidated: true
   }))
 }
-
 
 export default loginFormDataSlice.reducer
