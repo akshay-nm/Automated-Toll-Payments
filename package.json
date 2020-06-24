@@ -5,8 +5,8 @@
     "atp-vehicle-owner-client"
   ],
   "scripts": {
-    "start": "conurrently 'yarn workspace atp-admin-client start' 'yarn workspace atp-vehicle-owner-client start'",
-    "deploy": "conurrently 'yarn workspace atp-admin-client deploy' 'yarn workspace atp-vehicle-owner-client deploy'"
+    "start": "concurrently 'yarn workspace atp-admin-client start' 'yarn workspace atp-vehicle-owner-client start'",
+    "deploy": "concurrently 'yarn workspace atp-admin-client deploy' 'yarn workspace atp-vehicle-owner-client deploy'"
   },
   "devDependencies": {
     "concurrently": "^5.2.0"
