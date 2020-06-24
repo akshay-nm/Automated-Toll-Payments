@@ -20,6 +20,7 @@ Using this system, the `contractor` and the `authorities` can monitor all the to
 - Admin client
 - User client
 - Booth client
+- Transaction server
 
 ### Admin client
 
@@ -47,6 +48,26 @@ Using this system, the `contractor` and the `authorities` can monitor all the to
 - Login using admin credentials
 - Create a booth configuration (Select camera)
 - Select a toll to add the configured booth to.
+
+### Pass cloud function
+
+- Args: `vehicleRc`, `checkpostId`, `timestamp`
+- if request authenticated and args valid 
+  - create a pass event
+  - if the vehicle is normal or exempted
+    - create the transaction event
+  - else 
+    - create the blacklisted vehicle event
+  - return 
+- else
+  - if authorization error
+    - create unauthorized request event
+  - if validation error
+    - create bad request event
+  - if any other error
+    - create unknown error event 
+
+- Send notifications to users on successful transacion creation
 
 ## The Process: 
 
