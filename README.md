@@ -4,187 +4,71 @@
 
 ** URL for vehicle owner client: [https://atp-vehicle-owner-client.web.app](https://atp-vehicle-owner-client.web.app/login) **
 
-ATP is an application based on object detection, OCR, Payment gateway and link-generation
+## Some insights
 
-- Input  = Image from a Camera showing vehicle and its license plate
-- Output = License Plate detection, performing optical character recognition (OCR) on License plate, cross check the license plate number with the database of license plate, generate a payment link and notify the user.
+When making roads, the government doesn't always pay the contractors in full. Instead the government lets the contractors charge 
+a toll from the road users for a particular timeperiod. The toll values are fixed by the government (revised each year). A contractor might have contracts
+of more than one stretch of road, and hence more than one toll `checkposts`. A toll `checkpost` can have multiple toll `booths`. Each toll booth needs to be configured before it can be used. Since each toll `booth` uses a `camera`, the system needs to be told about it. Once the camera has been configured, the system needs information about the toll `checkpost` so that all the `transactions` can be linked to it. 
+The toll booth's job is to identify the `vehicle` using the `camera` and begin the `transaction` generation process.
 
-## Tasks
+Each `transaction` should contain enough information to uniquely identify the toll `checkpost`, the `contractor` and the `vehicle owner`. Once the transaction has been created, both parties are informed about it. 
+To avoid misuse, the vehicles have to be `registered` into the system. Incase of an `unregistered` vehicle, the system will not allow the vehicle to pass and will also notify `authorities`.
+Using this system, the `contractor` and the `authorities` can monitor all the toll `checkposts`. The `vehicle owners` can monitor their `expenses` and `vehicles`. This project has been designed as a **realtime** system. 
 
-<table>
-  <thead>
-    <tr>
-      <th>T.Code</th>
-      <th>Task Description</th>
-      <th>Performed by</th>
-      <th colspan=6>API used</th>
-    </tr>
-    <tr>
-      <th colspan=3></th>
-      <th>name</th>
-      <th>endpoint description</th>
-      <th>path</th>
-      <th>header</th>
-      <th>method</th>
-      <th>query</th>
-      <th>body</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>A01</td>
-      <td>Add a new vehicle</td>
-      <td>Admin</td>
-      <td>atp-vehicles-api</td>
-      <td>CREATE VEHICLE DATA</td>
-      <td>/vehicles</td>
-      <td>Content-Type: application/json</td>
-      <td>POST</td>
-      <td>-</td>
-      <td>createVehicleBody</td>
-    </tr>
-    <tr>
-      <td>A02</td>
-      <td>Update vehicle status: blacklist | exempt | normal</td>
-      <td>Admin</td>
-      <td>atp-vehicles-api</td>
-      <td>UPDATE VEHICLE DATA</td>
-      <td>/vehicles</td>
-      <td>Content-Type: application/json</td>
-      <td>PUT</td>
-      <td>updateVehicleQuery</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td>A03</td>
-      <td>Cancel a pending transaction</td>
-      <td>Admin</td>
-      <td>atp-transactions-api</td>
-      <td>UPDATE TRANSACTION DATA</td>
-      <td>/transactions</td>
-      <td>Content-Type: application/json</td>
-      <td>PUT</td>
-      <td>updateTransactionQuery</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td>U01</td>
-      <td>Pay pending fee</td>
-      <td>User</td>
-      <td>atp-transactions-api</td>
-      <td>COMPLETE PENDING TRANSACTION</td>
-      <td>/pay</td>
-      <td>Content-Type: application/json</td>
-      <td>POST</td>
-      <td>-</td>
-      <td>payBody</td>
-    </tr>
-    <tr>
-      <td>U02</td>
-      <td>Report Suspicious Activity with reason for own vehicle</td>
-      <td>User</td>
-      <td>atp-sar-api</td>
-      <td>CREATE SUSPICIOUS ACTIVITY REPORT</td>
-      <td>/</td>
-      <td>Content-Type: application/json</td>
-      <td>POST</td>
-      <td>-</td>
-      <td>createSarBody</td>
-    </tr>
-    <tr>
-      <td>U03</td>
-      <td>Close Suspicious Activity with reason for own vehicle</td>
-      <td>User</td>
-      <td>atp-sar-api</td>
-      <td>UPDATE SUSPICIOUS ACTIVITY REPORT</td>
-      <td>/</td>
-      <td>Content-Type: application/json</td>
-      <td>PUT</td>
-      <td>createSarQuery</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td>S01</td>
-      <td>Identify vehicle</td>
-      <td>System</td>
-      <td>atp-vehicles-api</td>
-      <td>READ VEHICLE DATA</td>
-      <td>/vehicles</td>
-      <td>Content-Type: application/json</td>
-      <td>GET</td>
-      <td>readVehicleQuery</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td>S02</td>
-      <td>Create and send Payment link to the user</td>
-      <td>System</td>
-      <td>atp-vehicles-api</td>
-      <td>READ VEHICLE TOLL RATE DATA</td>
-      <td>/rates</td>
-      <td>Content-Type: application/json</td>
-      <td>GET</td>
-      <td>readVehicleTollRatesQuery</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td colspan=3></td>
-      <td>atp-transactions-api</td>
-      <td>CREATE TRANSACTION</td>
-      <td>/</td>
-      <td>Content-Type: application/json</td>
-      <td>GET</td>
-      <td>-</td>
-      <td>createTransactionBody</td>
-    </tr>
-    <tr>
-      <td>S03</td>
-      <td>Accept payment for pending transaction</td>
-      <td>System</td>
-      <td>atp-transactions-api</td>
-      <td>UDPATE TRANSACTION DATA</td>
-      <td>/</td>
-      <td>Content-Type: application/json</td>
-      <td>PUT</td>
-      <td>updateTransactionQuery</td>
-      <td>-</td>
-    </tr>
-  
-  </tbody>
-</table>
+## Components
 
-## Additional Tasks
+- Admin client
+- User client
+- Booth client
+- Transaction server
 
-- displaying a message for the vehicle on a signboard incase of pending payment (pending payments)
-- notifying authorities incase of a blacklisted/unregistered vehicle
-- notifying authorities incase of a suspicious activity
-- geofencing
+### Admin client
 
-## Parts of system:          
+- Register as an administrator
+- Update profile
+- Add a toll
+- View all tolls
+- Update toll status
+- Remove a toll
+- View Transactions per toll
+- View all transacions
 
-### Vehicle Identification
+### User client
 
-- Importing raw video from the camera as soon as a vehicle has appeared in it.
-- Running it through openCV to detect the license plate.
-- Extracting the license plate frame.
-- Detecting the license plate and running it through tesseract to obtain the license plate number.
+- Login with OTP
+- Monitor Vehicles
+- Update contact details
+- View toll transaction history
+- View pending toll transactions
+- Pay for a pending toll transaction
+- Raise suspicious activity
 
-### Admin Panel
+### Booth client
 
-This is a dashboard for monitoring the state of system.
-- Number of blacklisted vehicles
-- Number of expemtped vehicles
-- Current vehicles with pending payments
-- Last spotting of balcklisted vehicles
-- revenue charts
-- unregistered vehicle spotting
+- Login using admin credentials
+- Create a booth configuration (Select camera)
+- Select a toll to add the configured booth to.
+**Run the RC plate detection bot and send HTTP requests to the Pass Cloud function.**
 
-### Payment links
-These are generated when a registered vehicle passes through the toll booth. Forwarded to the client via SMS/ in-app notifications
+### Pass cloud function
 
-### Payments page
-These are pages which facilitate payment against pending charges. 
+- Args: `vehicleRc`, `checkpostId`, `timestamp`
+- if request authenticated and args valid 
+  - create a pass event
+  - if the vehicle is normal or exempted
+    - create the transaction event
+  - else 
+    - create the blacklisted vehicle event
+  - return 
+- else
+  - if authorization error
+    - create unauthorized request event
+  - if validation error
+    - create bad request event
+  - if any other error
+    - create unknown error event 
 
+- Send notifications to users on successful transacion creation
 
 ## The Process: 
 
@@ -212,17 +96,6 @@ These are pages which facilitate payment against pending charges.
 2. The user then selects report suspicious activity.
 3. The server then updates the vehicle status as blacklisted.
 
-
-## Network Nodes
-
-- API Servers
-  - booths
-  - sar
-  - transactions
-  - vehicles
-- Payment Client
-- Admin Client
-- Database
                     
 ## Payment Link Requirements
 
