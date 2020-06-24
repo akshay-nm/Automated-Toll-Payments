@@ -19,7 +19,7 @@
   },
   "scripts": {
     "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
-    "start": "yarn run build:style && react-scripts start",
+    "start": "yarn run build:style && export PORT=3000 && react-scripts start",
     "build": "react-scripts build",
     "deploy": "yarn run build:style && yarn run react-scripts build && firebase deploy",
     "test": "react-scripts test",
