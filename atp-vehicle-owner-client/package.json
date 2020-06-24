@@ -1,5 +1,5 @@
 {
-  "name": "atp-admin-client",
+  "name": "atp-vehicle-owner-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
