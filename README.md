@@ -48,6 +48,7 @@ Using this system, the `contractor` and the `authorities` can monitor all the to
 - Login using admin credentials
 - Create a booth configuration (Select camera)
 - Select a toll to add the configured booth to.
+**Run the RC plate detection bot and send HTTP requests to the Pass Cloud function.**
 
 ### Pass cloud function
 
