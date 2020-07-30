@@ -1,14 +1,16 @@
 {
   "private": true,
   "workspaces": [
-    "atp-admin-client",
-    "atp-vehicle-owner-client"
+    "packages/*"
   ],
   "scripts": {
-    "start": "concurrently 'yarn workspace atp-admin-client start' 'yarn workspace atp-vehicle-owner-client start'",
-    "deploy": "concurrently 'yarn workspace atp-admin-client deploy' 'yarn workspace atp-vehicle-owner-client deploy'"
+    "start": "yarn lerna run start",
+    "test": "yarn lerna run test",
+    "build": "yarn lerna run build",
+    "deploy": "yarn lerna run deploy"
   },
   "devDependencies": {
-    "concurrently": "^5.2.0"
-  }
+    "lerna": "^3.22.1"
+  },
+  "name": "automated-toll-payments"
 }
