@@ -7,7 +7,7 @@
 ## Getting started
 
 - Clone the repository using `git clone git@github.com:SidSiddharthSingh/Automated-Toll-Payments.git`
-- Checkout to appropriate branch (this is currently `version1`)
+- Checkout to appropriate branch and commit changes, finally push changes to github servers and raise a Pull Request.
 - Run `yarn` command once in the project directory
 - Run `yarn workspace user-registration-portal start` for starting development server for `user-registration-portal`, or `yarn workspace admin-panel start` for starting development server for `admin-panel`.
 
