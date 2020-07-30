@@ -4,6 +4,13 @@
 
 ** URL for user registration portal: [https://atp-user-registration.web.app](https://atp-user-registration.web.app) **
 
+## Getting started
+
+- Clone the repository using `git clone git@github.com:SidSiddharthSingh/Automated-Toll-Payments.git`
+- Checkout to appropriate branch (this is currently `version1`)
+- Run `yarn` command once in the project directory
+- Run `yarn workspace user-registration-portal start` for starting development server for `user-registration-portal`, or `yarn workspace admin-panel start` for starting development server for `admin-panel`.
+
 ## Pending tasks
 
 ### Admin panel
