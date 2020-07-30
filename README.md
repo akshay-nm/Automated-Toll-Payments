@@ -1,8 +1,24 @@
 # Automated-Toll-Payments(ATP)
 
-** URL for admin client: [https://atp-admin-client.web.app](https://atp-admin-client.web.app/login) **
+** URL for admin panel: [https://atp-admin.web.app](https://atp-admin.web.app) **
 
-** URL for vehicle owner client: [https://atp-vehicle-owner-client.web.app](https://atp-vehicle-owner-client.web.app/login) **
+** URL for user registration portal: [https://atp-user-registration.web.app](https://atp-user-registration.web.app) **
+
+## Pending tasks
+
+### Admin panel
+
+- Media streaming support
+- Admin panel UI
+  - Firebase integration
+  - Tensorflow integration
+
+### User registration portal
+
+- Form validation conditions
+- Firestore security checks
+
+## Old docs
 
 ## Some insights
 
